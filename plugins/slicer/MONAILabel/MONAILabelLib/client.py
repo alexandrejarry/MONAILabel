@@ -453,7 +453,14 @@ class MONAILabelClient:
         response = bytes_to_str(response)
         logging.debug(f"Response: {response}")
         return json.loads(response)
-
+    
+    def submit_form(self,dict):
+        
+        response = requests.post(self._server_url, json=dict)
+        print("test")
+        print(response.json())
+        
+        return
 
 class MONAILabelError:
     """

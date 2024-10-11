@@ -328,6 +328,8 @@ class MONAILabelWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         self.ui.dgUpdateCheckBox.setStyleSheet("padding-left: 10px;")
         self.ui.optionsSection.connect("currentIndexChanged(int)", self.onSelectOptionsSection)
         self.ui.optionsName.connect("currentIndexChanged(int)", self.onSelectOptionsName)
+        self.ui.submitFormButton.connect("clicked(bool)",self.submitForm)
+
 
         # Scribbles
         # brush and eraser icon from: https://tablericons.com/
@@ -2200,8 +2202,40 @@ class MONAILabelWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
             fp.write("}")  # end of root
         label_info = []
         return label_in, label_info
+    
+    def onClickSubmitForm(self):
+        # Get data from form
+        amniotic_fluid = "Yes" if self.ui.yesRadioButtonAmnioticFluid.isChecked() else "No"
+        maternal_bladder = "Yes" if self.ui.yesRadioButtonMaternalBladder.isChecked() else "No"
+        fetal_head = "Yes" if self.ui.yesRadioButtonFetalHead.isChecked() else "No"
+        fetal_chest = "Yes" if self.ui.yesRadioButtonFetalChest.isChecked() else "No"
+        fetal_heart = "Yes" if self.ui.yesRadioButtonFetalHeart.isChecked() else "No"
+        fetal_limb = "Yes" if self.ui.yesRadioButtonFetalLimb.isChecked() else "No"
+        placenta = "Yes" if self.ui.yesRadioButtonPlacenta.isChecked() else "No"
+        umbilical_cord = "Yes" if self.ui.yesRadioButtonUmbilicalCord.isChecked() else "No"
+        shadowing = "Yes" if self.ui.yesRadioButtonShadowing.isChecked() else "No"
+        dropout = "Yes" if self.ui.yesRadioButtonDropout.isChecked() else "No"
+        gain = "Gain" if self.ui.gainCheckBox.isChecked() else "No"
+        deep = "Too deep" if self.ui.deepCheckBox.isChecked() else "No"
+        shallow = "Too shallow" if self.ui.shallowCheckBox.isChecked() else "No"
 
+        # Create dictionnary from form
+        data = {
+            "amniotic_fluid": amniotic_fluid,
+            "maternal_bladder": maternal_bladder,
+            "fetal_head": fetal_head,
+            "fetal_chest": fetal_chest,
+            "fetal_heart": fetal_heart,
+            "fetal_limb": fetal_limb,
+            "placenta": placenta,
+            "umbilical_cord": umbilical_cord,
+            "shadowing": shadowing,
+            "dropout": dropout,
+            "issues":[gain,deep,shallow]
+        }
+        return self.logic.submit_form(data)
 
+   
 class MONAILabelLogic(ScriptedLoadableModuleLogic):
     def __init__(self, tmpdir=None, server_url=None, progress_callback=None, client_id=None, resourcePath=None):
         ScriptedLoadableModuleLogic.__init__(self)
@@ -2335,6 +2369,8 @@ class MONAILabelLogic(ScriptedLoadableModuleLogic):
     def train_stop(self):
         return self._client().train_stop()
 
+    def submit_form(self,data):
+        return self._client().submit_form(data)
 
 class LoginDialog(qt.QDialog):
     def __init__(self, username, password, resourcePath):

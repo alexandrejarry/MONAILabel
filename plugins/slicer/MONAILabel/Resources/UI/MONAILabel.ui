@@ -110,6 +110,500 @@
     </layout>
    </item>
    <item>
+    <widget class="ctkCollapsibleButton" name="formCollapsibleButton">
+      <property name="text">
+      <string>Form</string>
+     </property>
+     <property name="collapsed">
+      <bool>true</bool>
+     </property>
+     <property name="collapsedHeight">
+      <number>9</number>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+     <item row="2" column="0">
+      <widget class="QGroupBox" name="amnioticFluidGroup">
+       <property name="title">
+        <string></string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+            <widget class="QLabel" name="amnioticFluidLabel">
+                <property name="text">
+                    <string>Is there a 'measurable' amniotic fluid pocket?</string>
+                </property>
+                <property name="wordWrap">
+                    <bool>true</bool> <!-- Enable word wrapping -->
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignLeft</set> <!-- Align text to the left -->
+                </property>
+            </widget>
+        </item>
+       <item>
+        <widget class="QRadioButton" name="yesRadioButtonAmnioticFluid">
+         <property name="text">
+          <string>Yes</string> <!-- Label for the "Yes" radio button -->
+         </property>
+         <property name="checked">
+          <bool>false</bool> <!-- Set to true if you want "Yes" selected by default -->
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="noRadioButtonAmnioticFluid">
+         <property name="text">
+          <string>No</string> <!-- Label for the "No" radio button -->
+         </property>
+         <property name="checked">
+          <bool>true</bool> <!-- Set to true if you want "No" selected by default -->
+         </property>
+        </widget>
+       </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QGroupBox" name="maternalBladderGroup">
+       <property name="title">
+        <string></string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+            <widget class="QLabel" name="maternalBladderLabel">
+                <property name="text">
+                    <string>Is maternal bladder visible?</string>
+                </property>
+                <property name="wordWrap">
+                    <bool>true</bool> <!-- Enable word wrapping -->
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignLeft</set> <!-- Align text to the left -->
+                </property>
+            </widget>
+        </item>
+       <item>
+        <widget class="QRadioButton" name="yesRadioButtonMaternalBladder">
+         <property name="text">
+          <string>Yes</string> <!-- Label for the "Yes" radio button -->
+         </property>
+         <property name="checked">
+          <bool>false</bool> <!-- Set to true if you want "Yes" selected by default -->
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="noRadioButtonMaternalBladder">
+         <property name="text">
+          <string>No</string> <!-- Label for the "No" radio button -->
+         </property>
+         <property name="checked">
+          <bool>true</bool> <!-- Set to true if you want "No" selected by default -->
+         </property>
+        </widget>
+       </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QGroupBox" name="fetalHeadGroup">
+       <property name="title">
+        <string></string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+            <widget class="QLabel" name="fetalHeadLabel">
+                <property name="text">
+                    <string>Is fetal head visible?</string>
+                </property>
+                <property name="wordWrap">
+                    <bool>true</bool> <!-- Enable word wrapping -->
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignLeft</set> <!-- Align text to the left -->
+                </property>
+            </widget>
+        </item>
+       <item>
+        <widget class="QRadioButton" name="yesRadioButtonFetalHead">
+         <property name="text">
+          <string>Yes</string> <!-- Label for the "Yes" radio button -->
+         </property>
+         <property name="checked">
+          <bool>false</bool> <!-- Set to true if you want "Yes" selected by default -->
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="noRadioButtonFetalHead">
+         <property name="text">
+          <string>No</string> <!-- Label for the "No" radio button -->
+         </property>
+         <property name="checked">
+          <bool>true</bool> <!-- Set to true if you want "No" selected by default -->
+         </property>
+        </widget>
+       </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QGroupBox" name="fetalChestGroup">
+       <property name="title">
+        <string></string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+            <widget class="QLabel" name="fetalChestLabel">
+                <property name="text">
+                    <string>Is fetal chest/abdomen visible?</string>
+                </property>
+                <property name="wordWrap">
+                    <bool>true</bool> <!-- Enable word wrapping -->
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignLeft</set> <!-- Align text to the left -->
+                </property>
+            </widget>
+        </item>
+       <item>
+        <widget class="QRadioButton" name="yesRadioButtonFetalChest">
+         <property name="text">
+          <string>Yes</string> <!-- Label for the "Yes" radio button -->
+         </property>
+         <property name="checked">
+          <bool>false</bool> <!-- Set to true if you want "Yes" selected by default -->
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="noRadioButtonFetalChest">
+         <property name="text">
+          <string>No</string> <!-- Label for the "No" radio button -->
+         </property>
+         <property name="checked">
+          <bool>true</bool> <!-- Set to true if you want "No" selected by default -->
+         </property>
+        </widget>
+       </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QGroupBox" name="fetalHeartGroup">
+       <property name="title">
+        <string></string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+            <widget class="QLabel" name="fetalHeartLabel">
+                <property name="text">
+                    <string>Is fetal heart visible?</string>
+                </property>
+                <property name="wordWrap">
+                    <bool>true</bool> <!-- Enable word wrapping -->
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignLeft</set> <!-- Align text to the left -->
+                </property>
+            </widget>
+        </item>
+       <item>
+        <widget class="QRadioButton" name="yesRadioButtonFetalHeart">
+         <property name="text">
+          <string>Yes</string> <!-- Label for the "Yes" radio button -->
+         </property>
+         <property name="checked">
+          <bool>false</bool> <!-- Set to true if you want "Yes" selected by default -->
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="noRadioButtonFetalHeart">
+         <property name="text">
+          <string>No</string> <!-- Label for the "No" radio button -->
+         </property>
+         <property name="checked">
+          <bool>true</bool> <!-- Set to true if you want "No" selected by default -->
+         </property>
+        </widget>
+       </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QGroupBox" name="fetalLimbGroup">
+       <property name="title">
+        <string></string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+            <widget class="QLabel" name="fetalLimbLabel">
+                <property name="text">
+                    <string>Is fetal limb / other fetal part visible?</string>
+                </property>
+                <property name="wordWrap">
+                    <bool>true</bool> <!-- Enable word wrapping -->
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignLeft</set> <!-- Align text to the left -->
+                </property>
+            </widget>
+        </item>
+       <item>
+        <widget class="QRadioButton" name="yesRadioButtonFetalLimb">
+         <property name="text">
+          <string>Yes</string> <!-- Label for the "Yes" radio button -->
+         </property>
+         <property name="checked">
+          <bool>false</bool> <!-- Set to true if you want "Yes" selected by default -->
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="noRadioButtonFetalLimb">
+         <property name="text">
+          <string>No</string> <!-- Label for the "No" radio button -->
+         </property>
+         <property name="checked">
+          <bool>true</bool> <!-- Set to true if you want "No" selected by default -->
+         </property>
+        </widget>
+       </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QGroupBox" name="placentaGroup">
+       <property name="title">
+        <string></string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+            <widget class="QLabel" name="placentaLabel">
+                <property name="text">
+                    <string>Is placenta visible?</string>
+                </property>
+                <property name="wordWrap">
+                    <bool>true</bool> <!-- Enable word wrapping -->
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignLeft</set> <!-- Align text to the left -->
+                </property>
+            </widget>
+        </item>
+       <item>
+        <widget class="QRadioButton" name="yesRadioButtonPlacenta">
+         <property name="text">
+          <string>Yes</string> <!-- Label for the "Yes" radio button -->
+         </property>
+         <property name="checked">
+          <bool>false</bool> <!-- Set to true if you want "Yes" selected by default -->
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="noRadioButtonPlacenta">
+         <property name="text">
+          <string>No</string> <!-- Label for the "No" radio button -->
+         </property>
+         <property name="checked">
+          <bool>true</bool> <!-- Set to true if you want "No" selected by default -->
+         </property>
+        </widget>
+       </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QGroupBox" name="umbilicalCordGroup">
+       <property name="title">
+        <string></string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+            <widget class="QLabel" name="umbilicalCordLabel">
+                <property name="text">
+                    <string>Is umbilical cord present?</string>
+                </property>
+                <property name="wordWrap">
+                    <bool>true</bool> <!-- Enable word wrapping -->
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignLeft</set> <!-- Align text to the left -->
+                </property>
+            </widget>
+        </item>
+       <item>
+        <widget class="QRadioButton" name="yesRadioButtonUmbilicalCord">
+         <property name="text">
+          <string>Yes</string> <!-- Label for the "Yes" radio button -->
+         </property>
+         <property name="checked">
+          <bool>false</bool> <!-- Set to true if you want "Yes" selected by default -->
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="noRadioButtonUmbilicalCord">
+         <property name="text">
+          <string>No</string> <!-- Label for the "No" radio button -->
+         </property>
+         <property name="checked">
+          <bool>true</bool> <!-- Set to true if you want "No" selected by default -->
+         </property>
+        </widget>
+       </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="10" column="0">
+      <widget class="QGroupBox" name="shadowingGroup">
+       <property name="title">
+        <string></string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+            <widget class="QLabel" name="shadowingLabel">
+                <property name="text">
+                    <string>Is shadowing present that precludes accurate assessment of amniotic fluid volume?</string>
+                </property>
+                <property name="wordWrap">
+                    <bool>true</bool> <!-- Enable word wrapping -->
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignLeft</set> <!-- Align text to the left -->
+                </property>
+            </widget>
+        </item>
+       <item>
+        <widget class="QRadioButton" name="yesRadioButtonShadowing">
+         <property name="text">
+          <string>Yes</string> <!-- Label for the "Yes" radio button -->
+         </property>
+         <property name="checked">
+          <bool>false</bool> <!-- Set to true if you want "Yes" selected by default -->
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="noRadioButtonShadowing">
+         <property name="text">
+          <string>No</string> <!-- Label for the "No" radio button -->
+         </property>
+         <property name="checked">
+          <bool>true</bool> <!-- Set to true if you want "No" selected by default -->
+         </property>
+        </widget>
+       </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="11" column="0">
+      <widget class="QGroupBox" name="dropoutGroup">
+       <property name="title">
+        <string></string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+            <widget class="QLabel" name="dropoutLabel">
+                <property name="text">
+                    <string>Is dropout present that precludes accurate assessment of amniotic fluid volume?</string>
+                </property>
+                <property name="wordWrap">
+                    <bool>true</bool> <!-- Enable word wrapping -->
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignLeft</set> <!-- Align text to the left -->
+                </property>
+            </widget>
+        </item>
+       <item>
+        <widget class="QRadioButton" name="yesRadioButtonDropout">
+         <property name="text">
+          <string>Yes</string> <!-- Label for the "Yes" radio button -->
+         </property>
+         <property name="checked">
+          <bool>false</bool> <!-- Set to true if you want "Yes" selected by default -->
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="noRadioButtonDropout">
+         <property name="text">
+          <string>No</string> <!-- Label for the "No" radio button -->
+         </property>
+         <property name="checked">
+          <bool>true</bool> <!-- Set to true if you want "No" selected by default -->
+         </property>
+        </widget>
+       </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="12" column="0">
+      <widget class="QGroupBox" name="issuesGroup">
+       <property name="title">
+        <string></string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+            <widget class="QLabel" name="issuesLabel">
+                <property name="text">
+                    <string>Are there any issues with any of the following ultrasound settings that preclude accurate assessment of amniotic fluid volume? (Check all that apply)</string>
+                </property>
+                <property name="wordWrap">
+                    <bool>true</bool> <!-- Enable word wrapping -->
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignLeft</set> <!-- Align text to the left -->
+                </property>
+            </widget>
+        </item>
+       <item>
+        <widget class="QCheckBox" name="gainCheckBox">
+         <property name="text">
+          <string>Gain setting</string>
+         </property>
+        </widget>
+       </item>
+        <item>
+        <widget class="QCheckBox" name="deepCheckBox">
+         <property name="text">
+          <string>Depth/zoom setting - too deep</string>
+         </property>
+        </widget>
+       </item>
+        <item>
+        <widget class="QCheckBox" name="shallowCheckBox">
+         <property name="text">
+          <string>Depth/zoom setting - too shallow</string>
+         </property>
+        </widget>
+       </item>
+       </layout>
+      </widget>
+     </item>
+     <item row="13" column="0">
+      <widget class="QPushButton" name="submitFormButton">
+       <property name="toolTip">
+        <string>Submit form</string>
+       </property>
+       <property name="text">
+        <string>Submit</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+    </widget>
+   </item>
+   <item>
     <widget class="ctkCollapsibleButton" name="optionsCollapsibleButton">
      <property name="text">
       <string>Options</string>
