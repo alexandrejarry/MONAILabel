@@ -455,10 +455,11 @@ class MONAILabelClient:
         return json.loads(response)
     
     def submit_form(self,dict):
-        
-        response = requests.post(self._server_url, json=dict)
-        print("test")
-        print(response.json())
+        selector = "/form/"
+        body = dict
+        status, response, _, _ = MONAILabelUtils.http_method("POST", self._server_url, selector, body, headers=self._headers)
+        #response = requests.post(self._server_url, json=dict)
+        print(response)
         
         return
 

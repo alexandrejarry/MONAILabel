@@ -328,7 +328,7 @@ class MONAILabelWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         self.ui.dgUpdateCheckBox.setStyleSheet("padding-left: 10px;")
         self.ui.optionsSection.connect("currentIndexChanged(int)", self.onSelectOptionsSection)
         self.ui.optionsName.connect("currentIndexChanged(int)", self.onSelectOptionsName)
-        self.ui.submitFormButton.connect("clicked(bool)",self.submitForm)
+        self.ui.submitFormButton.connect("clicked(bool)",self.onClickSubmitForm)
 
 
         # Scribbles
@@ -2231,7 +2231,9 @@ class MONAILabelWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
             "umbilical_cord": umbilical_cord,
             "shadowing": shadowing,
             "dropout": dropout,
-            "issues":[gain,deep,shallow]
+            "gain_issue": gain,
+            "deep_zoom_issue": deep,
+            "shallow_zoom_issue": shallow
         }
         return self.logic.submit_form(data)
 

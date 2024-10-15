@@ -1,8 +1,8 @@
-from fastapi import APIRouter, Depends
-from enum import Enum
-from monailabel.endpoints.user.auth import RBAC, User
-from monailabel.config import RBAC_ADMIN, RBAC_USER, settings
+from fastapi import APIRouter
+import logging
 from pydantic import BaseModel
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(
     prefix="/form",
@@ -22,16 +22,10 @@ class Form(BaseModel):
     umbilical_cord: str
     shadowing: str
     dropout: str
-    gain: str
-    deep: str
-    shallow: str
+    gain_issue: str
+    deep_zoom_issue: str
+    shallow_zoom_issue: str
 
-@router.post("/")
+@router.post("/form")
 async def submit_form(form: Form):
-    user: User = Depends(RBAC(settings.MONAI_LABEL_AUTH_ROLE_ADMIN))
-    return {"Form sent": form}
-
-@router.get("/")
-async def get_form(form: Form):
-    user: User = Depends(RBAC(settings.MONAI_LABEL_AUTH_ROLE_ADMIN))
-    return {"Form sent": form}
+    return {"message": "form saved"}
