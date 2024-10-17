@@ -23,6 +23,7 @@ from monailabel.interfaces.tasks.strategy import Strategy
 from monailabel.interfaces.tasks.train import TrainTask
 from monailabel.tasks.activelearning.first import First
 from monailabel.tasks.activelearning.random import Random
+from monailabel.tasks.activelearning.user_based import User_Based
 from monailabel.tasks.infer.bundle import BundleInferTask
 from monailabel.tasks.scoring.epistemic_v2 import EpistemicScoring
 from monailabel.tasks.train.bundle import BundleTrainTask
@@ -94,6 +95,7 @@ class MyApp(MONAILabelApp):
         strategies: Dict[str, Strategy] = {
             "random": Random(),
             "first": First(),
+            "user_based": User_Based(),
         }
 
         logger.info(f"Active Learning Strategies:: {list(strategies.keys())}")
