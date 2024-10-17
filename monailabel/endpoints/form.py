@@ -28,4 +28,4 @@ class Form(BaseModel):
 
 @router.post("/form")
 async def submit_form(form: Form):
-    return {"message": "form saved"}
+    return {"message": "form saved", "form":form}
