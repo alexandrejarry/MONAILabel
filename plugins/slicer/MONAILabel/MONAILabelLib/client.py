@@ -275,7 +275,14 @@ class MONAILabelClient:
         response = bytes_to_str(response)
         logging.debug(f"Response: {response}")
         return json.loads(response)
-
+    
+    def save_form(self,image_id, dict):
+        selector = f"/form/?={MONAILabelUtils.urllib_quote_plus(image_id)}"
+        body = dict
+        _, response, _, _ = MONAILabelUtils.http_method("POST", self._server_url, selector, body, headers=self._headers)
+        print(response)
+        
+        return
     def datastore(self):
         selector = "/datastore/?output=all"
         status, response, _, _ = MONAILabelUtils.http_method("GET", self._server_url, selector, headers=self._headers)
@@ -453,15 +460,7 @@ class MONAILabelClient:
         response = bytes_to_str(response)
         logging.debug(f"Response: {response}")
         return json.loads(response)
-    
-    def submit_form(self,dict):
-        selector = "/form/"
-        body = dict
-        status, response, _, _ = MONAILabelUtils.http_method("POST", self._server_url, selector, body, headers=self._headers)
-        #response = requests.post(self._server_url, json=dict)
-        print(response)
-        
-        return
+
 
 class MONAILabelError:
     """

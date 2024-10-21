@@ -320,6 +320,7 @@ class MONAILabelWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         self.ui.trainingButton.connect("clicked(bool)", self.onTraining)
         self.ui.stopTrainingButton.connect("clicked(bool)", self.onStopTraining)
         self.ui.saveLabelButton.connect("clicked(bool)", self.onSaveLabel)
+        self.ui.saveLabelButton.connect("clicked(bool)", self.onClickSaveForm)
         self.ui.uploadImageButton.connect("clicked(bool)", self.onUploadImage)
         self.ui.importLabelButton.connect("clicked(bool)", self.onImportLabel)
         self.ui.labelComboBox.connect("currentIndexChanged(int)", self.onSelectLabel)
@@ -328,7 +329,7 @@ class MONAILabelWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         self.ui.dgUpdateCheckBox.setStyleSheet("padding-left: 10px;")
         self.ui.optionsSection.connect("currentIndexChanged(int)", self.onSelectOptionsSection)
         self.ui.optionsName.connect("currentIndexChanged(int)", self.onSelectOptionsName)
-        self.ui.submitFormButton.connect("clicked(bool)",self.onClickSubmitForm)
+        self.ui.submitFormButton.connect("clicked(bool)",self.onClickSaveForm)
 
 
         # Scribbles
@@ -2203,7 +2204,8 @@ class MONAILabelWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         label_info = []
         return label_in, label_info
     
-    def onClickSubmitForm(self):
+    def onClickSaveForm(self):
+
         # Get data from form
         amniotic_fluid = "Yes" if self.ui.yesRadioButtonAmnioticFluid.isChecked() else "No"
         maternal_bladder = "Yes" if self.ui.yesRadioButtonMaternalBladder.isChecked() else "No"
@@ -2215,7 +2217,7 @@ class MONAILabelWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         umbilical_cord = "Yes" if self.ui.yesRadioButtonUmbilicalCord.isChecked() else "No"
         shadowing = "Yes" if self.ui.yesRadioButtonShadowing.isChecked() else "No"
         dropout = "Yes" if self.ui.yesRadioButtonDropout.isChecked() else "No"
-        gain = "Gain" if self.ui.gainCheckBox.isChecked() else "No"
+        gain = "Yes" if self.ui.gainCheckBox.isChecked() else "No"
         deep = "Too deep" if self.ui.deepCheckBox.isChecked() else "No"
         shallow = "Too shallow" if self.ui.shallowCheckBox.isChecked() else "No"
 
@@ -2235,7 +2237,7 @@ class MONAILabelWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
             "deep_zoom_issue": deep,
             "shallow_zoom_issue": shallow
         }
-        return self.logic.submit_form(data)
+        return self.logic.save_form(self.current_sample["id"],data)
 
    
 class MONAILabelLogic(ScriptedLoadableModuleLogic):
@@ -2371,8 +2373,8 @@ class MONAILabelLogic(ScriptedLoadableModuleLogic):
     def train_stop(self):
         return self._client().train_stop()
 
-    def submit_form(self,data):
-        return self._client().submit_form(data)
+    def save_form(self, image_id, data):
+        return self._client().save_form(image_id, data)
 
 class LoginDialog(qt.QDialog):
     def __init__(self, username, password, resourcePath):

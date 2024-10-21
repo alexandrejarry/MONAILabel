@@ -236,6 +236,15 @@ class Datastore(metaclass=ABCMeta):
         pass
 
     @abstractmethod
+    def save_form(self, image_id: str, form) -> str:
+        """
+        Save a form for the given image id and return the form's file name
+        :param image_id: the image id for the label
+        :param form: form you want to save
+        """
+        pass
+
+    @abstractmethod
     def remove_label(self, label_id: str, label_tag: str) -> None:
         """
         Remove label from the datastore

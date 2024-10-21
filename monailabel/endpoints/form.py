@@ -27,5 +27,5 @@ class Form(BaseModel):
     shallow_zoom_issue: str
 
 @router.post("/form")
-async def submit_form(form: Form):
-    return {"message": "form saved", "form":form}
+async def save_form(form: Form):
+    return form
