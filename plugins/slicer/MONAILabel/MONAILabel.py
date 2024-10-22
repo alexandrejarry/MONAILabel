@@ -2221,8 +2221,9 @@ class MONAILabelWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         deep = "Too deep" if self.ui.deepCheckBox.isChecked() else "No"
         shallow = "Too shallow" if self.ui.shallowCheckBox.isChecked() else "No"
 
-        # Create dictionnary from form
+        # Create dictionary from form
         data = {
+            "image_id": self.current_sample["id"],
             "amniotic_fluid": amniotic_fluid,
             "maternal_bladder": maternal_bladder,
             "fetal_head": fetal_head,
@@ -2237,9 +2238,8 @@ class MONAILabelWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
             "deep_zoom_issue": deep,
             "shallow_zoom_issue": shallow
         }
-        return self.logic.save_form(self.current_sample["id"],data)
-
-   
+        return self.logic.save_form(data)
+        
 class MONAILabelLogic(ScriptedLoadableModuleLogic):
     def __init__(self, tmpdir=None, server_url=None, progress_callback=None, client_id=None, resourcePath=None):
         ScriptedLoadableModuleLogic.__init__(self)
@@ -2373,8 +2373,8 @@ class MONAILabelLogic(ScriptedLoadableModuleLogic):
     def train_stop(self):
         return self._client().train_stop()
 
-    def save_form(self, image_id, data):
-        return self._client().save_form(image_id, data)
+    def save_form(self, data):
+        return self._client().save_form(data)
 
 class LoginDialog(qt.QDialog):
     def __init__(self, username, password, resourcePath):

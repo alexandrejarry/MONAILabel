@@ -276,13 +276,20 @@ class MONAILabelClient:
         logging.debug(f"Response: {response}")
         return json.loads(response)
     
-    def save_form(self,image_id, dict):
-        selector = f"/form/?={MONAILabelUtils.urllib_quote_plus(image_id)}"
-        body = dict
+    def save_form(self,data):
+        """
+        Save/Submit Form
+
+        :param image_id: Image Id for which label needs to saved/submitted
+        :param data: Dictionary containing the form data
+        :return: json response
+        """
+        selector = "/form/"
+        body = data
         _, response, _, _ = MONAILabelUtils.http_method("POST", self._server_url, selector, body, headers=self._headers)
         print(response)
-        
         return
+    
     def datastore(self):
         selector = "/datastore/?output=all"
         status, response, _, _ = MONAILabelUtils.http_method("GET", self._server_url, selector, headers=self._headers)

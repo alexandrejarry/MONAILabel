@@ -314,7 +314,6 @@ class MONAILabelApp:
                 label_id = datastore.save_label(
                     image_id, result_file_name, tag, {"model": model, "params": result_json}
                 )
-                datastore.save_form(image_id, request.get("form"))
             else:
                 label_id = result_file_name
 

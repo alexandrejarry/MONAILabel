@@ -1,6 +1,8 @@
 from fastapi import APIRouter
 import logging
 from pydantic import BaseModel
+from monailabel.interfaces.utils.app import app_instance
+from monailabel.interfaces.app import MONAILabelApp
 
 logger = logging.getLogger(__name__)
 
@@ -11,7 +13,7 @@ router = APIRouter(
 )
 
 class Form(BaseModel):
-
+    image_id: str
     amniotic_fluid: str
     maternal_bladder: str
     fetal_head: str
@@ -25,7 +27,14 @@ class Form(BaseModel):
     gain_issue: str
     deep_zoom_issue: str
     shallow_zoom_issue: str
+    
 
-@router.post("/form")
-async def save_form(form: Form):
-    return form
+def save_form(form):
+    instance: MONAILabelApp = app_instance()
+    return instance.datastore().save_form(form)
+
+    
+@router.post("/")
+async def api_save_form(data: Form):
+    form = dict(data)
+    return save_form(form)

@@ -83,13 +83,9 @@ class LocalDatastoreModel(BaseModel):
         path = self.labels_dir
         return {tag: os.path.join(path, tag) if self.base_path else path for tag in self.tags()}
     
-    def form_path(self, tag):
-        path = os.path.join(self.forms_dir, tag) if tag else self.forms_dir
-        return os.path.join(self.base_path, path) if self.base_path else path
-
-    def forms_path(self):
+    def form_path(self):
         path = self.forms_dir
-        return {tag: os.path.join(path, tag) if self.base_path else path for tag in self.tags()}
+        return os.path.join(self.base_path, path) if self.base_path else path
 
 
 class LocalDatastore(Datastore):
@@ -151,7 +147,7 @@ class LocalDatastore(Datastore):
         os.makedirs(self._datastore.label_path(None), exist_ok=True)
         os.makedirs(self._datastore.label_path(DefaultLabelTag.FINAL), exist_ok=True)
         os.makedirs(self._datastore.label_path(DefaultLabelTag.ORIGINAL), exist_ok=True)
-        os.makedirs(self._datastore.form_path(None), exist_ok=True)
+        os.makedirs(self._datastore.form_path(), exist_ok=True)
 
 
         # reconcile the loaded datastore file with any existing files in the path
@@ -523,14 +519,13 @@ class LocalDatastore(Datastore):
         logger.debug("Release the lock!")
         return label_id
     
-    def save_form(self,image_id: str, form):
-        form_filename = self._filename(image_id,"_form.json")
+    def save_form(self, form):
+        form_filename = self._filename(form.get("image_id"),"_form.json")
         form_path = self._datastore.form_path()
         dest = os.path.join(form_path, form_filename)
-
+        print("destination", dest)
         with open(dest,'w') as json_file:
             json.dump(form, json_file,indent=4)
-
         return form_filename
     
     def remove_label(self, label_id: str, label_tag: str) -> None:
