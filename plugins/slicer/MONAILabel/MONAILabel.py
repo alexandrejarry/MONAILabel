@@ -329,8 +329,6 @@ class MONAILabelWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         self.ui.dgUpdateCheckBox.setStyleSheet("padding-left: 10px;")
         self.ui.optionsSection.connect("currentIndexChanged(int)", self.onSelectOptionsSection)
         self.ui.optionsName.connect("currentIndexChanged(int)", self.onSelectOptionsName)
-        self.ui.submitFormButton.connect("clicked(bool)",self.onClickSaveForm)
-
 
         # Scribbles
         # brush and eraser icon from: https://tablericons.com/
